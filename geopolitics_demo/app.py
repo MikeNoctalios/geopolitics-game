@@ -3,17 +3,16 @@ import json
 import os
 import copy
 from openai import OpenAI
+from datetime import datetime
 
 # ==========================================
 # 0. СИСТЕМНЫЕ ПАПКИ И НАСТРОЙКИ
 # ==========================================
 CONFIG_FILE = "config.json"
-SAVES_DIR = "saves"
 SCENARIOS_DIR = "scenarios"
 
-for d in [SAVES_DIR, SCENARIOS_DIR]:
-    if not os.path.exists(d):
-        os.makedirs(d)
+if not os.path.exists(SCENARIOS_DIR):
+    os.makedirs(SCENARIOS_DIR)
 
 def load_config():
     if os.path.exists(CONFIG_FILE):
@@ -21,67 +20,68 @@ def load_config():
             with open(CONFIG_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except: pass
-    return {"api_key": "", "base_url": "", "model_name": "gpt-4o-mini"}
+    return {"api_key": "", "base_url": "", "model_name": "gpt-4o-mini", "theme": "Светлая (по умолчанию)"}
 
-def save_config(api_key, base_url, model_name):
+def save_config(api_key, base_url, model_name, theme):
     with open(CONFIG_FILE, "w", encoding="utf-8") as f:
-        json.dump({"api_key": api_key, "base_url": base_url, "model_name": model_name}, f)
+        json.dump({"api_key": api_key, "base_url": base_url, "model_name": model_name, "theme": theme}, f)
+
+def apply_theme(theme_name):
+    themes = {
+        "Тёмная": "{background-color: #1e1e1e; color: #f0f0f0;}",
+        "Светлая (по умолчанию)": "",
+        "Серая": "{background-color: #7f8c8d; color: #ffffff;}",
+        "Пустынная": "{background-color: #e6d5b8; color: #3e2723;}",
+        "Яркая зелёная": "{background-color: #a8e6cf; color: #1b4332;}",
+        "Тёмная зелёная": "{background-color: #1b4332; color: #d8f3dc;}",
+        "Синяя": "{background-color: #1a365d; color: #e2e8f0;}"
+    }
+    css = themes.get(theme_name, "")
+    if css:
+        st.markdown(f"<style>.stApp {css} .stSidebar {css}</style>", unsafe_allow_html=True)
 
 # ==========================================
-# 1. ЛОГИКА СОХРАНЕНИЙ И ИНИЦИАЛИЗАЦИИ
+# 1. ЛОГИКА СОХРАНЕНИЙ (ФАЙЛОВАЯ)
 # ==========================================
-def get_save_info(slot):
-    path = os.path.join(SAVES_DIR, f"save_{slot}.json")
-    if os.path.exists(path):
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                return f"{data.get('player_country', 'Неизвестно')} | Ход: {data.get('turn', 1)} | Дата: {data.get('current_date', '')}"
-        except json.JSONDecodeError:
-            return "Повреждённое сохранение"
-    return "Пустая ячейка"
+def get_save_data_str():
+    """Генерирует строку JSON для скачивания сохранения"""
+    save_data = {}
+    for k, v in st.session_state.items():
+        # Исключаем временные UI-ключи и историю отката
+        if not k.startswith(("orders_", "diplo_", "current_diplo_target", "chat_", "uploaded_save")) and k != "history":
+            if isinstance(v, set):
+                save_data[k] = list(v)
+            else:
+                save_data[k] = v
+    return json.dumps(save_data, ensure_ascii=False, indent=2)
 
-def load_game(slot):
-    path = os.path.join(SAVES_DIR, f"save_{slot}.json")
+def load_game_from_file(uploaded_file):
+    """Загружает игру из загруженного файла"""
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            for k, v in data.items():
-                st.session_state[k] = v
+        data = json.load(uploaded_file)
+        for k, v in data.items():
+            st.session_state[k] = v
+        
+        if "unread_messages" in st.session_state and isinstance(st.session_state.unread_messages, list):
+            st.session_state.unread_messages = set(st.session_state.unread_messages)
             
-            if "unread_messages" in st.session_state and isinstance(st.session_state.unread_messages, list):
-                st.session_state.unread_messages = set(st.session_state.unread_messages)
-                
-            st.session_state.current_slot = slot
-            st.session_state.in_game = True
-    except json.JSONDecodeError:
-        st.error("Ошибка загрузки: файл сохранения повреждён.")
+        st.session_state.in_game = True
+        return True
+    except Exception as e:
+        st.error(f"Ошибка загрузки сохранения. Возможно, файл повреждён. Детали: {e}")
+        return False
 
-def save_game():
-    if "current_slot" in st.session_state:
-        path = os.path.join(SAVES_DIR, f"save_{st.session_state.current_slot}.json")
-        save_data = {}
-        for k, v in st.session_state.items():
-            if not k.startswith(("orders_", "diplo_", "current_diplo_target", "chat_")) and k != "history":
-                if isinstance(v, set):
-                    save_data[k] = list(v)
-                else:
-                    save_data[k] = v
-                    
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(save_data, f, ensure_ascii=False)
-
-def delete_save(slot):
-    path = os.path.join(SAVES_DIR, f"save_{slot}.json")
-    if os.path.exists(path): os.remove(path)
-
-def start_new_game(slot, scenario_file, country):
+def start_new_game(scenario_file, country):
     with open(os.path.join(SCENARIOS_DIR, scenario_file), "r", encoding="utf-8") as f:
         scen = json.load(f)
     
-    st.session_state.clear()
+    # Очищаем старые данные
+    keys_to_keep = ["menu_stage", "selected_scenario"]
+    for key in list(st.session_state.keys()):
+        if key not in keys_to_keep:
+            del st.session_state[key]
+            
     st.session_state.in_game = True
-    st.session_state.current_slot = slot
     st.session_state.turn = 1
     st.session_state.current_date = scen["start_date"]
     st.session_state.player_country = country
@@ -101,14 +101,12 @@ def start_new_game(slot, scenario_file, country):
     st.session_state.pending_diplo = []
     st.session_state.meta_instructions = ""
     st.session_state.history = []
-    save_game()
 
 def rollback_turn():
-    if st.session_state.history:
+    if st.session_state.get("history"):
         last_state = st.session_state.history.pop()
         for k, v in last_state.items():
             st.session_state[k] = v
-        save_game()
         return True
     return False
 
@@ -127,11 +125,11 @@ def process_turn(api_key, base_url, model_name, player_orders, diplo_messages):
     Ты ИИ-гейммастер. Симулируй мир, учитывая действия игрока и великих держав.
     Ход времени динамический: если событий мало, проматывай на 2-4 месяца. Если война/кризис - на 1-3 недели.
     
-    ВАЖНОЕ ПРАВИЛО: В "new_world_events" добавляй ТОЛЬКО публично известные новости! Тайные действия (шпионаж, секретные договоры, тайное перевооружение) НЕ должны попадать в мировые новости, пока их не раскроют. О тайных успехах/провалах самого игрока пиши лично ему в "new_player_events".
+    ВАЖНОЕ ПРАВИЛО: В "new_world_events" добавляй ТОЛЬКО публично известные новости! Тайные действия НЕ должны попадать в мировые новости. О тайных успехах/провалах игрока пиши лично ему в "new_player_events".
     
     Верни ТОЛЬКО JSON:
     {
-      "new_date": "<Новая дата, например 'Апрель 1935'>",
+      "new_date": "<Новая дата>",
       "new_world_events": [{"turn": <int>, "title": "<str>", "desc": "<str>", "type": "public"}],
       "new_player_events": [{"turn": <int>, "title": "<str>", "desc": "<str>"}],
       "updated_countries": {
@@ -144,9 +142,7 @@ def process_turn(api_key, base_url, model_name, player_orders, diplo_messages):
       },
       "diplo_responses": [{"from": "<str>", "to": "<str>", "message": "<str>"}]
     }
-    В diplo_responses ИИ-страны могут писать игроку первыми, предлагать идеи или выдвигать требования.
-    Удаляй старые решенные current_issues и добавляй новые.
-    Без markdown, только сырой JSON.
+    В diplo_responses ИИ-страны могут писать игроку первыми. Удаляй решенные current_issues и добавляй новые. Без markdown.
     """
     
     state_for_ai = {
@@ -208,60 +204,52 @@ def ask_advisor_ai(api_key, base_url, model_name, role, user_question):
 # ==========================================
 st.set_page_config(page_title="Geopolitics AI", layout="wide")
 cfg = load_config()
+apply_theme(cfg.get("theme", "Светлая (по умолчанию)"))
 
 if "menu_stage" not in st.session_state:
     st.session_state.menu_stage = 1
 
-# --- ГЛАВНОЕ МЕНЮ (МНОГОСТАДИЙНОЕ) ---
+# --- ГЛАВНОЕ МЕНЮ ---
 if "in_game" not in st.session_state or not st.session_state.in_game:
     st.title("🌍 Geopolitics AI")
     
-    # СТАДИЯ 1: Ячейки и Настройки
     if st.session_state.menu_stage == 1:
-        with st.expander("⚙️ Настройки API", expanded=True):
-            cfg_api = st.text_input("API Key", value=cfg.get("api_key", ""), type="password")
-            cfg_url = st.text_input("Base URL", value=cfg.get("base_url", ""))
-            cfg_mod = st.text_input("Model Name", value=cfg.get("model_name", "gpt-4o-mini"))
+        with st.expander("⚙️ Настройки API и Темы", expanded=True):
+            col_cfg1, col_cfg2 = st.columns(2)
+            with col_cfg1:
+                cfg_api = st.text_input("API Key", value=cfg.get("api_key", ""), type="password")
+                cfg_url = st.text_input("Base URL", value=cfg.get("base_url", ""))
+                cfg_mod = st.text_input("Model Name", value=cfg.get("model_name", "gpt-4o-mini"))
+            with col_cfg2:
+                theme_list = ["Светлая (по умолчанию)", "Тёмная", "Серая", "Пустынная", "Яркая зелёная", "Тёмная зелёная", "Синяя"]
+                cfg_theme = st.selectbox("Визуальная тема", theme_list, index=theme_list.index(cfg.get("theme", "Светлая (по умолчанию)")))
                 
             if st.button("Сохранить настройки"):
-                save_config(cfg_api, cfg_url, cfg_mod)
-                st.success("Сохранено!")
+                save_config(cfg_api, cfg_url, cfg_mod, cfg_theme)
+                st.success("Сохранено! (Тема применится сразу)")
                 st.rerun()
 
-        st.subheader("Меню сохранений")
-        col1, col2, col3 = st.columns(3)
-        for i, col in enumerate([col1, col2, col3], 1):
-            with col:
-                st.card_title = f"Ячейка {i}"
-                info = get_save_info(i)
+        st.divider()
+        col_menu1, col_menu2 = st.columns(2)
+        
+        with col_menu1:
+            st.subheader("Начать новую игру")
+            if st.button("🚀 Выбрать сценарий", type="primary", use_container_width=True):
+                st.session_state.menu_stage = 2
+                st.rerun()
                 
-                if info == "Повреждённое сохранение":
-                    st.error(f"**{st.card_title}**\n\n{info}")
-                elif info != "Пустая ячейка":
-                    st.info(f"**{st.card_title}**\n\n{info}")
-                else:
-                    st.success(f"**{st.card_title}**\n\n{info}")
-                
-                if info not in ["Пустая ячейка", "Повреждённое сохранение"]:
-                    if st.button(f"Загрузить {i}", key=f"load_{i}", use_container_width=True):
-                        load_game(i)
+        with col_menu2:
+            st.subheader("Продолжить игру")
+            uploaded_save = st.file_uploader("Загрузите файл сохранения (.json)", type=["json"], key="file_uploader")
+            if uploaded_save is not None:
+                if st.button("📥 Загрузить сохранение", use_container_width=True):
+                    if load_game_from_file(uploaded_save):
                         st.rerun()
-                        
-                if info != "Пустая ячейка":
-                    if st.button(f"Удалить {i}", key=f"del_{i}", type="secondary", use_container_width=True):
-                        delete_save(i)
-                        st.rerun()
-                else:
-                    if st.button(f"Новая игра", key=f"new_{i}", type="primary", use_container_width=True):
-                        st.session_state.target_slot = i
-                        st.session_state.menu_stage = 2
-                        st.rerun()
-        st.stop()
 
-    # СТАДИЯ 2: Выбор сценария
+    # Выбор сценария
     elif st.session_state.menu_stage == 2:
         st.subheader("Шаг 1: Выбор сценария")
-        if st.button("⬅️ Назад к сохранениям"):
+        if st.button("⬅️ Назад в главное меню"):
             st.session_state.menu_stage = 1
             st.rerun()
             
@@ -283,9 +271,8 @@ if "in_game" not in st.session_state or not st.session_state.in_game:
                     st.session_state.selected_scenario = scen_file
                     st.session_state.menu_stage = 3
                     st.rerun()
-        st.stop()
 
-    # СТАДИЯ 3: Выбор страны
+    # Выбор страны
     elif st.session_state.menu_stage == 3:
         st.subheader("Шаг 2: Выбор страны")
         if st.button("⬅️ К списку сценариев"):
@@ -296,7 +283,6 @@ if "in_game" not in st.session_state or not st.session_state.in_game:
             scen_data = json.load(f)
             
         countries = scen_data.get("countries", {})
-        
         great_powers = sorted([c for c, d in countries.items() if d.get("is_great_power")])
         minors = sorted([c for c, d in countries.items() if not d.get("is_great_power")])
         
@@ -314,16 +300,27 @@ if "in_game" not in st.session_state or not st.session_state.in_game:
             c3.metric("Боеготовность", f"{c_data.get('stats', {}).get('military_readiness', 0)}/100")
             
             if st.button("🚀 Начать кампанию", type="primary", use_container_width=True):
-                start_new_game(st.session_state.target_slot, st.session_state.selected_scenario, selected_country)
+                start_new_game(st.session_state.selected_scenario, selected_country)
                 st.session_state.menu_stage = 1 
                 st.rerun()
-        st.stop()
+    st.stop()
 
 # --- ИГРОВОЙ ИНТЕРФЕЙС ---
 with st.sidebar:
-    st.header("Панель управления")
-    if st.button("💾 Сохранить и выйти в меню"):
-        save_game()
+    st.header("Управление игрой")
+    
+    # КНОПКА СКАЧИВАНИЯ СОХРАНЕНИЯ
+    save_str = get_save_data_str()
+    st.download_button(
+        label="📥 Скачать сохранение",
+        data=save_str,
+        file_name=f"save_turn_{st.session_state.turn}.json",
+        mime="application/json",
+        use_container_width=True,
+        type="primary"
+    )
+    
+    if st.button("🚪 Выйти в главное меню", use_container_width=True):
         st.session_state.in_game = False
         st.rerun()
         
@@ -402,7 +399,6 @@ with tab_diplo:
     
     target_data = st.session_state.countries[target_country]
     
-    # ВОССТАНОВЛЕНО ДОСЬЕ В ДИПЛОМАТИИ
     with st.expander(f"Досье: {target_country}", expanded=True):
         col_d1, col_d2 = st.columns(2)
         with col_d1:
@@ -528,5 +524,4 @@ with col_b2:
                 
                 st.session_state.pending_diplo = []
                 st.session_state.turn += 1
-                save_game() 
                 st.rerun()
