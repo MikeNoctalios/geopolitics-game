@@ -3,16 +3,43 @@ import json
 import os
 import copy
 from openai import OpenAI
-from datetime import datetime
 
 # ==========================================
-# 0. СИСТЕМНЫЕ ПАПКИ И НАСТРОЙКИ
+# 0. СИСТЕМНЫЕ ПАПКИ И НАСТРОЙКИ (Абсолютные пути)
 # ==========================================
-CONFIG_FILE = "config.json"
-SCENARIOS_DIR = "scenarios"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_FILE = os.path.join(BASE_DIR, "config.json")
+SAVES_DIR = os.path.join(BASE_DIR, "saves")
+SCENARIOS_DIR = os.path.join(BASE_DIR, "scenarios")
 
-if not os.path.exists(SCENARIOS_DIR):
-    os.makedirs(SCENARIOS_DIR)
+for d in [SAVES_DIR, SCENARIOS_DIR]:
+    if not os.path.exists(d):
+        os.makedirs(d)
+
+# Автогенерация базового сценария, если папка пуста (защита от ошибок GitHub)
+if not os.listdir(SCENARIOS_DIR):
+    fallback_scenario = {
+        "name": "1935: Базовый сценарий (Автогенерация)",
+        "description": "Сгенерировано автоматически, так как папка сценариев была пуста.",
+        "start_date": "1 Января 1935",
+        "world_events": [{"turn": 1, "title": "Начало", "desc": "Мир замер в ожидании.", "type": "public"}],
+        "countries": {
+            "Великобритания": {
+                "status": "Активная", "is_great_power": True, "regime": "Демократия", "faction": "Союзники", "overlord": None,
+                "stats": {"stability": 80, "war_support": 15, "military_readiness": 45},
+                "profile": "Морская гегемония.", "current_issues": [{"name": "Экономика", "status": "В процессе", "eta": "Годы"}],
+                "relations": {}
+            },
+            "Германия": {
+                "status": "Активная", "is_great_power": True, "regime": "Национал-социализм", "faction": "Нет", "overlord": None,
+                "stats": {"stability": 85, "war_support": 60, "military_readiness": 35},
+                "profile": "Ревизионизм.", "current_issues": [{"name": "Перевооружение", "status": "Тайное", "eta": "Годы"}],
+                "relations": {}
+            }
+        }
+    }
+    with open(os.path.join(SCENARIOS_DIR, "1935_fallback.json"), "w", encoding="utf-8") as f:
+        json.dump(fallback_scenario, f, ensure_ascii=False, indent=4)
 
 def load_config():
     if os.path.exists(CONFIG_FILE):
@@ -44,10 +71,8 @@ def apply_theme(theme_name):
 # 1. ЛОГИКА СОХРАНЕНИЙ (ФАЙЛОВАЯ)
 # ==========================================
 def get_save_data_str():
-    """Генерирует строку JSON для скачивания сохранения"""
     save_data = {}
     for k, v in st.session_state.items():
-        # Исключаем временные UI-ключи и историю отката
         if not k.startswith(("orders_", "diplo_", "current_diplo_target", "chat_", "uploaded_save")) and k != "history":
             if isinstance(v, set):
                 save_data[k] = list(v)
@@ -56,15 +81,12 @@ def get_save_data_str():
     return json.dumps(save_data, ensure_ascii=False, indent=2)
 
 def load_game_from_file(uploaded_file):
-    """Загружает игру из загруженного файла"""
     try:
         data = json.load(uploaded_file)
         for k, v in data.items():
             st.session_state[k] = v
-        
         if "unread_messages" in st.session_state and isinstance(st.session_state.unread_messages, list):
             st.session_state.unread_messages = set(st.session_state.unread_messages)
-            
         st.session_state.in_game = True
         return True
     except Exception as e:
@@ -75,7 +97,6 @@ def start_new_game(scenario_file, country):
     with open(os.path.join(SCENARIOS_DIR, scenario_file), "r", encoding="utf-8") as f:
         scen = json.load(f)
     
-    # Очищаем старые данные
     keys_to_keep = ["menu_stage", "selected_scenario"]
     for key in list(st.session_state.keys()):
         if key not in keys_to_keep:
@@ -182,7 +203,6 @@ def ask_advisor_ai(api_key, base_url, model_name, role, user_question):
         "foreign": "Министр иностранных дел (Дипломатия, пакты, шпионаж, отношения).",
         "defense": "Министр обороны (Армия, флот, война, производство оружия)."
     }
-    
     sys_prompt = f"""Ты - {role_desc[role]} страны {st.session_state.player_country}. 
     Дата: {st.session_state.current_date}. Стабильность: {stats['stats']['stability']}, Армия: {stats['stats']['military_readiness']}.
     Проблемы: {', '.join([i['name'] for i in stats.get('current_issues', [])])}.
@@ -254,10 +274,7 @@ if "in_game" not in st.session_state or not st.session_state.in_game:
             st.rerun()
             
         scenarios = [f for f in os.listdir(SCENARIOS_DIR) if f.endswith('.json')]
-        if not scenarios:
-            st.error("В папке scenarios/ нет ни одного сценария!")
-            st.stop()
-            
+        
         for scen_file in scenarios:
             with open(os.path.join(SCENARIOS_DIR, scen_file), "r", encoding="utf-8") as f:
                 scen_data = json.load(f)
@@ -271,6 +288,48 @@ if "in_game" not in st.session_state or not st.session_state.in_game:
                     st.session_state.selected_scenario = scen_file
                     st.session_state.menu_stage = 3
                     st.rerun()
+                    
+        st.divider()
+        st.subheader("🛠 Создание и загрузка сценариев")
+        
+        # ШАБЛОН ДЛЯ СКАЧИВАНИЯ
+        template_data = {
+            "name": "Мой кастомный сценарий",
+            "description": "Описание сценария...",
+            "start_date": "1 Сентября 1939",
+            "world_events": [{"turn": 1, "title": "Начало", "desc": "Мир изменился.", "type": "public"}],
+            "countries": {
+                "Моя Страна": {
+                    "status": "Активная", "is_great_power": True, "regime": "Республика", "faction": "Нет", "overlord": None,
+                    "stats": {"stability": 50, "war_support": 50, "military_readiness": 50},
+                    "profile": "Описание страны.", "current_issues": [{"name": "Проблема", "status": "Активно", "eta": "1 год"}],
+                    "relations": {"Другая Страна": "Враждебность"}
+                },
+                "Другая Страна": {
+                    "status": "Спящая", "is_great_power": False, "regime": "Монархия", "faction": "Нет", "overlord": None,
+                    "stats": {"stability": 30, "war_support": 20, "military_readiness": 10},
+                    "profile": "Минор.", "current_issues": [], "relations": {}
+                }
+            }
+        }
+        st.download_button(
+            label="📝 Скачать шаблон сценария (.json)",
+            data=json.dumps(template_data, ensure_ascii=False, indent=4),
+            file_name="scenario_template.json",
+            mime="application/json"
+        )
+        
+        # ЗАГРУЗКА КАСТОМНОГО СЦЕНАРИЯ
+        uploaded_scen = st.file_uploader("Загрузить готовый сценарий", type=["json"], key="scen_uploader")
+        if uploaded_scen:
+            try:
+                custom_scen_data = json.load(uploaded_scen)
+                file_path = os.path.join(SCENARIOS_DIR, uploaded_scen.name)
+                with open(file_path, "w", encoding="utf-8") as f:
+                    json.dump(custom_scen_data, f, ensure_ascii=False, indent=4)
+                st.success(f"Сценарий {uploaded_scen.name} успешно загружен! Обновите страницу или выберите его в списке выше.")
+            except Exception as e:
+                st.error(f"Ошибка загрузки сценария: {e}")
 
     # Выбор страны
     elif st.session_state.menu_stage == 3:
@@ -309,7 +368,6 @@ if "in_game" not in st.session_state or not st.session_state.in_game:
 with st.sidebar:
     st.header("Управление игрой")
     
-    # КНОПКА СКАЧИВАНИЯ СОХРАНЕНИЯ
     save_str = get_save_data_str()
     st.download_button(
         label="📥 Скачать сохранение",
