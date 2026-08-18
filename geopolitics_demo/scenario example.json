@@ -1,0 +1,110 @@
+{
+    "name": "Название вашего сценария",
+    "description": "Краткое описание эпохи, глобальной ситуации, конфликтов и кризисов на момент старта.",
+    "start_date": "1 Января 1935",
+    "world_events": [
+        {
+            "turn": 1,
+            "date": "1 Января 1935",
+            "title": "Заголовок стартового события",
+            "desc": "Описание того, что происходит в мире на момент открытия партии.",
+            "type": "public"
+        }
+    ],
+    "countries": {
+        "Пример Державы (Ручное заполнение армии)": {
+            "status": "Активная",
+            "is_great_power": true,
+            "regime": "Республика",
+            "faction": "Союзники",
+            "overlord": null,
+            "resources": "Нефть: умеренно | Сталь: избыток | Резина: дефицит",
+            "stats": {
+                "stability": 75,
+                "war_support": 40,
+                "military_readiness": 60,
+                "manpower_approx": "~1.1 млн чел."
+            },
+            "profile": "Краткая характеристика внешнеполитической доктрины, слабостей и целей государства.",
+            "current_issues": [
+                {
+                    "name": "Модернизация флота",
+                    "start_date": "1 Января 1935",
+                    "target_date": "1 Июня 1936",
+                    "status": "Проектирование (15%)"
+                }
+            ],
+            "relations": {
+                "Другая Держава": "Союзник"
+            },
+            "military": {
+                "infantry": [
+                    {
+                        "name": "Образец винтовки обр. 1930",
+                        "type": "Пехотная винтовка",
+                        "count": 1500000,
+                        "production": true,
+                        "in_service": true,
+                        "specs": "Калибр 7.62 мм, магазин на 5 патронов",
+                        "evaluation": "Надёжное массовое оружие пехоты.",
+                        "is_known_globally": true
+                    }
+                ],
+                "ground": [
+                    {
+                        "name": "Легкий танк Модель А",
+                        "type": "Легкий танк",
+                        "count": 450,
+                        "production": true,
+                        "in_service": true,
+                        "specs": "Броня 15 мм, 37-мм пушка, скорость 35 км/ч",
+                        "evaluation": "Устаревает, противоснарядное бронирование отсутствует.",
+                        "is_known_globally": true
+                    }
+                ],
+                "air": [
+                    {
+                        "name": "Истребитель-биплан Ф-1",
+                        "type": "Истребитель",
+                        "count": 300,
+                        "production": true,
+                        "in_service": true,
+                        "specs": "Скорость 380 км/ч, 2 пулемёта 7.7 мм",
+                        "evaluation": "Высокая манёвренность, но низкая скорость.",
+                        "is_known_globally": false
+                    }
+                ],
+                "navy": [
+                    {
+                        "name": "Эскадренные миноносцы типа 'Шторм'",
+                        "type": "Эсминец",
+                        "count": 18,
+                        "production": true,
+                        "in_service": true,
+                        "specs": "Водоизмещение 1500 т, 4х 120-мм орудия, 2х трехтрубных ТА",
+                        "evaluation": "Хорошие мореходные качества для эскорта.",
+                        "is_known_globally": true
+                    }
+                ]
+            }
+        },
+        "Пример Минора (Автогенерация через genit)": {
+            "status": "Спящая",
+            "is_great_power": false,
+            "regime": "Монархия",
+            "faction": "Нет",
+            "overlord": null,
+            "resources": "Нефть: нет | Сельское хозяйство: избыток",
+            "stats": {
+                "stability": 60,
+                "war_support": 20,
+                "military_readiness": 25,
+                "manpower_approx": "~120 тыс. чел."
+            },
+            "profile": "Нейтральное аграрное государство, опирающееся на импорт вооружений.",
+            "current_issues": [],
+            "relations": {},
+            "military": "genit" //genit means military for this country will be generated directly in the game//
+        }
+    }
+}
