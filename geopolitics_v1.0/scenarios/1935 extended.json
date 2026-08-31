@@ -1,0 +1,347 @@
+{
+    "name": "В преддверии бури: 1935 (Extended)",
+    "description": "Сценарий стартует 1 января 1935 года. Мир всё ещё не оправился от Великой депрессии. Набирают силу тоталитарные режимы. В Южной Америке бушует Чакская война, в Китае идет Великий поход коммунистов, а Японская Империя продолжает экспансию.",
+    "start_date": "1 Января 1935",
+    "world_events": [
+        {
+            "turn": 1,
+            "date": "1 Января 1935",
+            "title": "Новый 1935 год",
+            "desc": "Мир вступает в 1935 год. Третий Рейх тайно наращивает вооружения, Лига Наций готовится к плебисциту в Сааре 13 января. Назревает конфликт между Италией и Эфиопией после инцидента в Уал-Уале.",
+            "type": "public"
+        }
+    ],
+    "countries": {
+        "СССР": {
+            "status": "Активная",
+            "is_great_power": true,
+            "regime": "Коммунизм",
+            "faction": "Коминтерн",
+            "overlord": null,
+            "resources": "Нефть: изобилие (Баку) | Сталь: избыток (Урал) | Хлеб: экспорт",
+            "stats": { "stability": 75, "war_support": 60, "military_readiness": 55, "manpower_approx": "1.3 млн чел." },
+            "profile": "Советский Союз проводит Вторую пятилетку, стремительно индустриализируясь. Идет процесс коллективизации и реорганизации РККА.",
+            "current_issues": [
+                { "name": "Вторая пятилетка", "start_date": "1 Января 1935", "target_date": "31 Декабря 1937", "status": "Выполнение плана (45%)" }
+            ],
+            "relations": { "Японская Империя": "Настороженность", "Германский Рейх": "Враждебность" },
+            "military": {
+                "infantry": [
+                    { "name": "Винтовка Мосина обр. 1891/30 г.", "type": "Магазинная винтовка", "count": 4800000, "production": true, "in_service": true, "specs": "7.62x54R, магазин 5 патронов, прицел до 2000 м", "evaluation": "Надёжная и неприхотливая, основная основа пехоты.", "is_known_globally": true },
+                    { "name": "Револьвер системы Нагана обр. 1895 г.", "type": "Револьвер", "count": 850000, "production": true, "in_service": true, "specs": "7.62x38R, 7 патронов, обтюрация пороховых газов", "evaluation": "Устаревает, идёт постепенный переход на ТТ-33.", "is_known_globally": true },
+                    { "name": "Ручной пулемёт ДП-27", "type": "Ручной пулемёт", "count": 95000, "production": true, "in_service": true, "specs": "7.62x54R, диск на 47 патронов, скорострельность 550 выстр/мин", "evaluation": "Отличное оружие поддержки стрелкового отделения.", "is_known_globally": true },
+                    { "name": "Станковый пулемёт Максим обр. 1910 г.", "type": "Станковый пулемёт", "count": 65000, "production": true, "in_service": true, "specs": "7.62x54R, лента 250 патронов, водяное охлаждение", "evaluation": "Тяжёлый, но обладает непревзойденной плотностью огня.", "is_known_globally": true }
+                ],
+                "ground": [
+                    { "name": "Легкий танк Т-26 (двухбашенный и однобашенный)", "type": "Легкий танк", "count": 6500, "production": true, "in_service": true, "specs": "Броня 15 мм, 45-мм пушка 20-К (или 2 пулемета), скорость 30 км/ч", "evaluation": "Самый массовый танк в мире. Уязвим для ПТО, но огневая мощь 45-мм пушки превосходит зарубежные аналоги.", "is_known_globally": true },
+                    { "name": "Быстроходный танк БТ-5 / БТ-7", "type": "Колесно-гусеничный танк", "count": 2100, "production": true, "in_service": true, "specs": "Броня 13-20 мм, 45-мм пушка, скорость до 72 км/ч на колесах", "evaluation": "Превосходная оперативная подвижность для глубокой наступательной операции.", "is_known_globally": true },
+                    { "name": "Средний танк Т-28", "type": "Трехбашенный средний танк", "count": 220, "production": true, "in_service": true, "specs": "Броня 30 мм, 76-мм пушка КТ-28, 4-5 пулеметов ДТ", "evaluation": "Мощная машина прорыва качественного усиления, сложна в производстве.", "is_known_globally": false },
+                    { "name": "Тяжелый танк Т-35", "type": "Пятибашенный тяжелый танк", "count": 35, "production": true, "in_service": true, "specs": "Броня до 30 мм, 1x 76-мм + 2x 45-мм пушки, 50 тонн", "evaluation": "Символ мощи на парадах. Крайне низкая надёжность трансмиссии и слабая броня.", "is_known_globally": true },
+                    { "name": "76-мм полковая пушка обр. 1927 г.", "type": "Полковая артиллерия", "count": 3200, "production": true, "in_service": true, "specs": "Дальность стрельбы до 8.5 км, масса 900 кг", "evaluation": "Хорошая маневренная пушка непосредственной поддержки пехоты.", "is_known_globally": true }
+                ],
+                "air": [
+                    { "name": "Истребитель И-15", "type": "Истребитель-биплан", "count": 800, "production": true, "in_service": true, "specs": "Скорость 360 км/ч, 4x 7.62-мм пулемета ПВ-1", "evaluation": "Исключительная горизонтальная маневренность, любимец летчиков.", "is_known_globally": true },
+                    { "name": "Истребитель И-16 (тип 4/5)", "type": "Скоростной истребитель-моноплан", "count": 250, "production": true, "in_service": true, "specs": "Скорость 450 км/ч, убирающееся шасси, 2x ШКАС", "evaluation": "Революционный моноплан. Сложен в пилотировании, но превосходит бипланы по скорости.", "is_known_globally": false },
+                    { "name": "Тяжелый бомбардировщик ТБ-3 (АНТ-6)", "type": "Стратегический 4-моторный бомбардировщик", "count": 650, "production": true, "in_service": true, "specs": "Бомбовая нагрузка до 3000 кг, скорость 200 км/ч", "evaluation": "Грозная воздушная армада, однако медлительность делает его уязвимым днем.", "is_known_globally": true },
+                    { "name": "Разведчик/легкий бомбардировщик Р-5", "type": "Многоцелевой биплан", "count": 3000, "production": true, "in_service": true, "specs": "Скорость 230 км/ч, бомбы до 400 кг", "evaluation": "Рабочая лошадка ВВС, прост и надежен.", "is_known_globally": true }
+                ],
+                "navy": [
+                    { "name": "Линейные корабли типа 'Севастополь' ('Марат', 'Парижская Коммуна', 'Октябрьская Революция')", "type": "Линкор-дредноут", "count": 3, "production": false, "in_service": true, "specs": "Водоизмещение 26000 т, 12x 305-мм орудий, броня до 225 мм", "evaluation": "Прошли модернизацию, основа огневой мощи на Балтике и Черном море.", "is_known_globally": true },
+                    { "name": "Легкие крейсеры типа 'Светлана' / 'Красный Кавказ'", "type": "Крейсер", "count": 3, "production": false, "in_service": true, "specs": "Вооружение: 4х 180-мм или 15х 130-мм орудий", "evaluation": "Добротные корабли для закрытых морских театров.", "is_known_globally": true },
+                    { "name": "Подводные лодки типа 'Щука' (Серии V, V-бис, X)", "type": "Средняя подводная лодка", "count": 42, "production": true, "in_service": true, "specs": "6 торпедных аппаратов 533 мм, дальность 4500 миль", "evaluation": "Очень удачный проект, основа подводного флота СССР.", "is_known_globally": true }
+                ]
+            }
+        },
+        "Германский Рейх": {
+            "status": "Активная",
+            "is_great_power": true,
+            "regime": "Диктатура",
+            "faction": "Нет",
+            "overlord": null,
+            "resources": "Нефть: острый дефицит | Уголь: изобилие (Рур) | Сталь: избыток",
+            "stats": { "stability": 85, "war_support": 90, "military_readiness": 50, "manpower_approx": "750 тыс. чел." },
+            "profile": "Гитлер укрепляет власть. Страна готовится скинуть оковы Версальского договора и начать масштабное перевооружение вермахта и люфтваффе.",
+            "current_issues": [
+                { "name": "Плебисцит в Сааре", "start_date": "1 Января 1935", "target_date": "13 Января 1935", "status": "Финальная агитация" },
+                { "name": "Тайное развертывание Вермахта", "start_date": "1 Января 1935", "target_date": "16 Марта 1935", "status": "Подготовка закона о всеобщей воинской повинности" }
+            ],
+            "relations": { "Французская Республика": "Враждебность", "Польша": "Настороженность" },
+            "military": {
+                "infantry": [
+                    { "name": "Карабин Mauser 98k / Gewehr 98", "type": "Винтовка со скользящим затвором", "count": 2200000, "production": true, "in_service": true, "specs": "7.92x57 мм, магазин 5 патронов", "evaluation": "Высочайшая точность и непревзойденная надежность затвора Маузера.", "is_known_globally": true },
+                    { "name": "Пистолет-пулемет MP 28 / MP 34", "type": "Пистолет-пулемет", "count": 35000, "production": true, "in_service": true, "specs": "9x19 мм Parabellum, магазин 32 патрона", "evaluation": "Оружие штурмовых групп и полиции, дорогое в фрезеровке.", "is_known_globally": false },
+                    { "name": "Пулемет MG 13 (и подготовка MG 34)", "type": "Единый/ручной пулемет", "count": 45000, "production": true, "in_service": true, "specs": "7.92x57 мм, магазин 25 патронов (MG 13)", "evaluation": "Временный пулемет до запуска революционного ленточного MG 34.", "is_known_globally": false }
+                ],
+                "ground": [
+                    { "name": "Panzerkampfwagen I Ausf. A (Landwirtschaftlicher Schlepper)", "type": "Легкий танк / Танкетка", "count": 420, "production": true, "in_service": true, "specs": "Броня 13 мм, 2x 7.92-мм пулемета MG 13, масса 5.4 т", "evaluation": "Официально выпускается как 'сельскохозяйственный трактор'. Боевая ценность против танков нулевая, идеален для отработки тактики блицкрига.", "is_known_globally": false },
+                    { "name": "3.7 cm Pak 35/36", "type": "Противотанковое орудие", "count": 1400, "production": true, "in_service": true, "specs": "Калибр 37 мм, бронепробитие 35 мм на 500 м", "evaluation": "Легкая пушка, легко перекатываемая расчетом. Пробивает любые легкие танки эпохи.", "is_known_globally": true },
+                    { "name": "10.5 cm leFH 18", "type": "Дивизионная гаубица", "count": 1800, "production": true, "in_service": true, "specs": "Дальность стрельбы 10.6 км, масса 2 тонны", "evaluation": "Превосходное основное артиллерийское орудие пехотных дивизий.", "is_known_globally": true }
+                ],
+                "air": [
+                    { "name": "Истребитель Heinkel He 51", "type": "Истребитель-биплан", "count": 280, "production": true, "in_service": true, "specs": "Скорость 330 км/ч, 2x 7.92-мм пулемета MG 17", "evaluation": "Стандартный истребитель зарождающихся Люфтваффе, уступает И-15 в маневренности.", "is_known_globally": false },
+                    { "name": "Транспортник/бомбардировщик Junkers Ju 52/3m", "type": "Трехмоторный транспортник", "count": 450, "production": true, "in_service": true, "specs": "Грузоподъемность 18 десантников или 1500 кг бомб", "evaluation": "Исключительно надежный цельнометаллический самолет ('Тётушка Ю').", "is_known_globally": true },
+                    { "name": "Двухмоторный бомбардировщик Dornier Do 11 / Do 23", "type": "Средний бомбардировщик", "count": 180, "production": true, "in_service": true, "specs": "Бомбовая нагрузка до 1000 кг, скорость 260 км/ч", "evaluation": "Переходная модель бомбардировщика до готовности He 111 и Do 17.", "is_known_globally": false }
+                ],
+                "navy": [
+                    { "name": "Карманные линкоры типа 'Дойчланд' ('Deutschland', 'Admiral Scheer')", "type": "Тяжелый крейсер / Панцершифф", "count": 2, "production": true, "in_service": true, "specs": "Водоизмещение 10000 т (официально), 6x 280-мм орудий, дизели, дальность 10000 миль", "evaluation": "Идеальные рейдеры: сильнее любого крейсера, быстрее любого тяжелого линкора.", "is_known_globally": true },
+                    { "name": "Легкие крейсеры типа 'Кёнигсберг' и 'Лейпциг'", "type": "Легкий крейсер", "count": 5, "production": false, "in_service": true, "specs": "9x 150-мм орудий, скорость 32 узла", "evaluation": "Хорошая скорость, но слабая мореходность в штормовой Атлантике.", "is_known_globally": true },
+                    { "name": "Подводные лодки Type IIA (в компонентах на верфях)", "type": "Малая прибрежная подлодка", "count": 6, "production": true, "in_service": false, "specs": "3 носовых ТА 533 мм, водоизмещение 254 тонны", "evaluation": "Секретно строятся под видом сборных секций ('каноэ').", "is_known_globally": false }
+                ]
+            }
+        },
+        "Французская Республика": {
+            "status": "Активная",
+            "is_great_power": true,
+            "regime": "Республика",
+            "faction": "Нет",
+            "overlord": null,
+            "resources": "Нефть: дефицит | Сталь: избыток (Лотарингия) | Колонии: сырье",
+            "stats": { "stability": 40, "war_support": 25, "military_readiness": 70, "manpower_approx": "800 тыс. чел." },
+            "profile": "Третья республика политически нестабильна. Армия сильна на бумаге, но доктрины оборонительные. Строится мощная Линия Мажино.",
+            "current_issues": [
+                { "name": "Политический кризис (Левые vs Правые лиги)", "start_date": "1 Января 1935", "target_date": "1 Мая 1936", "status": "Уличные беспорядки" },
+                { "name": "Достройка Линии Мажино", "start_date": "1 Января 1935", "target_date": "1 Января 1937", "status": "Строительство фортов" }
+            ],
+            "relations": { "Германский Рейх": "Враждебность", "Великобритания": "Союзник" },
+            "military": {
+                "infantry": [
+                    { "name": "Винтовки системы Lebel 1886 и Berthier 1907/15", "type": "Магазинная винтовка", "count": 3100000, "production": false, "in_service": true, "specs": "8x50 мм R Lebel, устаревший патрон с закраиной", "evaluation": "Устарели, но запасы на складах огромны. Началась разработка MAS-36.", "is_known_globally": true },
+                    { "name": "Ручной пулемет FM 24/29", "type": "Ручной пулемет", "count": 55000, "production": true, "in_service": true, "specs": "7.5x54 мм, коробчатый магазин на 25 патронов", "evaluation": "Превосходный, точный и надежный ручной пулемет.", "is_known_globally": true }
+                ],
+                "ground": [
+                    { "name": "Легкий танк Renault FT-17", "type": "Легкий танк поддержки пехоты", "count": 2850, "production": false, "in_service": true, "specs": "Броня до 22 мм, 37-мм пушка Гочкисс или пулемет, скорость 8 км/ч", "evaluation": "Ветеран Первой мировой. Полностью устарел, скорость черепашья.", "is_known_globally": true },
+                    { "name": "Танк Char D1", "type": "Пехотный танк", "count": 160, "production": true, "in_service": true, "specs": "Броня 40 мм, 47-мм пушка SA34, скорость 18 км/ч", "evaluation": "Хорошее бронирование, но частые поломки радиостанций и трансмиссии.", "is_known_globally": true },
+                    { "name": "Тяжелый танк прорыва Char B1 (первые серии)", "type": "Тяжелый танк", "count": 25, "production": true, "in_service": true, "specs": "Броня 40-60 мм, 75-мм орудие в корпусе + 47-мм в башне", "evaluation": "Неуязвим для танковых пушек противника, но перегружен командир (одноместная башня).", "is_known_globally": false },
+                    { "name": "75-мм полевая пушка Canon de 75 mle 1897", "type": "Полевое скорострельное орудие", "count": 4500, "production": false, "in_service": true, "specs": "Знаменитая французская скорострелка, 15 выстр/мин", "evaluation": "Легендарная пушка, но требует модернизации лафета под мехтягу.", "is_known_globally": true }
+                ],
+                "air": [
+                    { "name": "Истребитель Dewoitine D.500 / D.501", "type": "Истребитель-моноплан с открытой кабиной", "count": 180, "production": true, "in_service": true, "specs": "Скорость 370 км/ч, 20-мм мотор-пушка Испано-Сюиза", "evaluation": "Первый моноплан ВВС Франции с мощным пушечным огнем.", "is_known_globally": true },
+                    { "name": "Бомбардировщик Bloch MB.200", "type": "Средний ночной бомбардировщик", "count": 120, "production": true, "in_service": true, "specs": "Угловатый цельнометаллический фюзеляж, скорость 280 км/ч", "evaluation": "Медленный, легкая добыча для современных истребителей.", "is_known_globally": true }
+                ],
+                "navy": [
+                    { "name": "Линкоры типов 'Бретань' и 'Курбэ'", "type": "Линкор", "count": 5, "production": false, "in_service": true, "specs": "10x 340-мм орудий (Бретань), броня до 270 мм", "evaluation": "Прошли модернизацию, основа линии баталии.", "is_known_globally": true },
+                    { "name": "Лидеры эсминцев типов 'Ле Фантаск' и 'Ягуар'", "type": "Крупный лидер эсминцев", "count": 24, "production": true, "in_service": true, "specs": "Скорость до 42 узлов (мировой рекорд), 5x 138-мм орудий", "evaluation": "Фактически малые быстроходные крейсеры, гордость флота.", "is_known_globally": true }
+                ]
+            }
+        },
+        "Королевство Италия": {
+            "status": "Активная",
+            "is_great_power": true,
+            "regime": "Фашизм",
+            "faction": "Нет",
+            "overlord": null,
+            "resources": "Нефть: критический дефицит | Уголь: дефицит | Сельское хозяйство: самообеспечение",
+            "stats": { "stability": 90, "war_support": 80, "military_readiness": 60, "manpower_approx": "600 тыс. чел." },
+            "profile": "Муссолини мечтает о возрождении Римской Империи и контроле над Средиземноморьем. Готовится массированное вторжение в Эфиопию.",
+            "current_issues": [
+                { "name": "Подготовка вторжения в Эфиопию", "start_date": "1 Января 1935", "target_date": "1 Октября 1935", "status": "Стягивание дивизий в Эритрею и Сомали" }
+            ],
+            "relations": { "Эфиопия": "Враждебность", "Австрия": "Гарантия независимости" },
+            "military": {
+                "infantry": [
+                    { "name": "Винтовка Carcano M1891 / M91/24", "type": "Магазинная винтовка", "count": 2100000, "production": true, "in_service": true, "specs": "6.5x52 мм Манлихер-Каркано, пачка на 6 патронов", "evaluation": "Простая винтовка, но патрон 6.5 мм обладает слабым останавливающим действием.", "is_known_globally": true },
+                    { "name": "Ручной пулемет Breda 30", "type": "Ручной пулемет", "count": 28000, "production": true, "in_service": true, "specs": "6.5 мм, латунные обоймы на 20 патронов с масленкой", "evaluation": "Капризный механизм, склонный к заклиниванию в пыли и песке пустынь.", "is_known_globally": true }
+                ],
+                "ground": [
+                    { "name": "Танкетка Carro Veloce L3/33 (CV-33)", "type": "Танкетка", "count": 850, "production": true, "in_service": true, "specs": "Броня 6-12 мм, 2x 8-мм пулемета, масса 3.2 т, скорость 42 км/ч", "evaluation": "Основной 'танк' Италии. Уязвим даже для бронебойных пуль винтовок, но дешев и легок для горных дорог.", "is_known_globally": true },
+                    { "name": "Танк Fiat 3000", "type": "Легкий танк", "count": 120, "production": false, "in_service": true, "specs": "Копия Рено FT с 37-мм пушкой или 2 пулеметами", "evaluation": "Безнадежно устаревший танк 20-х годов.", "is_known_globally": true }
+                ],
+                "air": [
+                    { "name": "Истребитель Fiat CR.32", "type": "Истребитель-биплан", "count": 320, "production": true, "in_service": true, "specs": "Скорость 375 км/ч, 2x 12.7-мм пулемета Breda-SAFAT", "evaluation": "Великолепный пилотажный биплан с мощным крупнокалиберным вооружением.", "is_known_globally": true },
+                    { "name": "Бомбардировщик Savoia-Marchetti SM.81 Pipistrello", "type": "Трехмоторный средний бомбардировщик", "count": 90, "production": true, "in_service": true, "specs": "Бомбы до 2000 кг, скорость 340 км/ч", "evaluation": "Современный трехмоторный бомбардировщик, готовится к отправке в Африку.", "is_known_globally": false }
+                ],
+                "navy": [
+                    { "name": "Линкоры типов 'Конте ди Кавур' и 'Андреа Дориа' (на модернизации)", "type": "Линкор", "count": 4, "production": false, "in_service": false, "specs": "Радикальная перестройка: скорость вырастет до 28 узлов, 10х 320-мм орудий", "evaluation": "Находятся на верфях на коренной реконструкции.", "is_known_globally": true },
+                    { "name": "Тяжелые крейсеры типа 'Зара'", "type": "Тяжелый крейсер", "count": 4, "production": false, "in_service": true, "specs": "Броня пояса 150 мм (лучшая в мире для крейсеров), 8x 203-мм орудий", "evaluation": "Превосходно сбалансированные и защищенные корабли Regia Marina.", "is_known_globally": true }
+                ]
+            }
+        },
+        "Боливия": {
+            "status": "Активная",
+            "is_great_power": false,
+            "regime": "Республика",
+            "faction": "Нет",
+            "overlord": null,
+            "resources": "Олово: мировой лидер | Нефть: спорные месторождения Гран-Чако",
+            "stats": { "stability": 40, "war_support": 80, "military_readiness": 60, "manpower_approx": "~55 тыс. чел." },
+            "profile": "Ведет ожесточенную Чакскую войну с Парагваем за контроль над нефтеносным районом Гран-Чако. Немецкие военные советники во главе с генералом Хансом Кундтом.",
+            "current_issues": [
+                { "name": "Чакская война", "start_date": "1 Января 1935", "target_date": "12 Июня 1935", "status": "Тяжелые бои в безводных кустарниках Чако" }
+            ],
+            "relations": { "Парагвай": "Война" },
+            "military": {
+                "infantry": [
+                    { "name": "Винтовки Mauser Boliviano Mod. 1907 / Standardmodell", "type": "Магазинная винтовка", "count": 60000, "production": false, "in_service": true, "specs": "7.65x53 мм Аргентинский Маузер", "evaluation": "Отличное качество закупки из Чехословакии и Германии.", "is_known_globally": true },
+                    { "name": "Пулеметы Vickers-Berthier и Maxim", "type": "Пулеметы", "count": 850, "production": false, "in_service": true, "specs": "7.65 мм, водяное и воздушное охлаждение", "evaluation": "Основа огневой мощи на укрепленных линиях.", "is_known_globally": true }
+                ],
+                "ground": [
+                    { "name": "Легкий танк Vickers 6-Ton (Типы А и B)", "type": "Легкий танк", "count": 3, "production": false, "in_service": true, "specs": "Двухбашенный пулеметный и однобашенный с 47-мм пушкой", "evaluation": "Первые танки в Южной Америке, страдают от перегрева в климате Чако.", "is_known_globally": true },
+                    { "name": "Танкетки Carden-Loyd Mk VIb", "type": "Танкетка", "count": 2, "production": false, "in_service": true, "specs": "1 пулемет Виккерс", "evaluation": "Малополезны в густых колючих кустарниках.", "is_known_globally": true }
+                ],
+                "air": [
+                    { "name": "Истребители Curtiss Hawk II / Osprey", "type": "Биплан", "count": 18, "production": false, "in_service": true, "specs": "Американские истребители-бомбардировщики", "evaluation": "Господствуют в воздухе над Чако.", "is_known_globally": true }
+                ],
+                "navy": []
+            }
+        },
+        "Парагвай": {
+            "status": "Активная",
+            "is_great_power": false,
+            "regime": "Республика",
+            "faction": "Нет",
+            "overlord": null,
+            "resources": "Квебрахо (танин): монополия | Мясо и зерно: самообеспечение",
+            "stats": { "stability": 50, "war_support": 90, "military_readiness": 65, "manpower_approx": "~40 тыс. чел." },
+            "profile": "Несмотря на меньшие ресурсы, успешно сражается в Чакской войне благодаря гению полковника Хосе Феликса Эстигаррибии и русским офицерам-эмигрантам (Беляев).",
+            "current_issues": [
+                { "name": "Чакская война (Битва при Вилья-Монтес)", "start_date": "1 Января 1935", "target_date": "12 Июня 1935", "status": "Наступление к предгорьям Анд" }
+            ],
+            "relations": { "Боливия": "Война" },
+            "military": {
+                "infantry": [
+                    { "name": "Винтовки Mauser Modelo 1907 и Oviedo (Испания)", "type": "Магазинная винтовка", "count": 45000, "production": false, "in_service": true, "specs": "7.65x53 мм", "evaluation": "Много трофейного боливийского оружия ('поставки от боливийских интендантов').", "is_known_globally": true },
+                    { "name": "Ручные пулеметы Madsen M1926", "type": "Ручной пулемет", "count": 500, "production": false, "in_service": true, "specs": "7.65 мм, секторный магазин на 25 патронов", "evaluation": "Идеально надежен в песках Чако, превосходит пулеметы противника.", "is_known_globally": true }
+                ],
+                "ground": [
+                    { "name": "75-мм горные пушки Schneider Mle 1927", "type": "Горная пушка", "count": 24, "production": false, "in_service": true, "specs": "Дальность 9 км", "evaluation": "Эффективная артиллерия в руках обученных расчетов.", "is_known_globally": true }
+                ],
+                "air": [
+                    { "name": "Истребители Wibault 73 и Potez 25", "type": "Французские бипланы", "count": 10, "production": false, "in_service": true, "specs": "Разведка и корректировка артиллерии", "evaluation": "Уступают боливийским Curtiss, используются осторожно.", "is_known_globally": true }
+                ],
+                "navy": [
+                    { "name": "Броненосные речные канонерки 'Парагвай' и 'Умаита'", "type": "Речная канонерка", "count": 2, "production": false, "in_service": true, "specs": "4x 120-мм орудия, броня 15-50 мм", "evaluation": "Плавучие крепости, обеспечивающие господство на реке Парагвай и ПВО столицы.", "is_known_globally": true }
+                ]
+            }
+        },
+
+        "Великобритания": {
+            "status": "Активная", "is_great_power": true, "regime": "Монархия", "faction": "Британская Империя", "overlord": null,
+            "resources": "Нефть: Ближний Восток/колонии | Резина: Малайя | Сталь: избыток",
+            "stats": { "stability": 80, "war_support": 30, "military_readiness": 65, "manpower_approx": "850 тыс. чел." },
+            "profile": "Владычица морей и крупнейшая империя в истории. Страдает от экономических последствий депрессии.",
+            "current_issues": [
+                { "name": "Укрепление обороны метрополии", "start_date": "1 Января 1935", "target_date": "1 Января 1937", "status": "Пересмотр бюджета" }
+            ],
+            "relations": { "Германский Рейх": "Настороженность" },
+            "military": "genit"
+        },
+        "США": {
+            "status": "Активная", "is_great_power": true, "regime": "Республика", "faction": "Нет", "overlord": null,
+            "resources": "Нефть: абсолютный лидер (Техас) | Сталь: гигантская индустрия | Зерно: избыток",
+            "stats": { "stability": 70, "war_support": 10, "military_readiness": 20, "manpower_approx": "350 тыс. чел." },
+            "profile": "США придерживаются политики изоляционизма. Ф.Д. Рузвельт реализует «Новый курс» для выхода из депрессии.",
+            "current_issues": [
+                { "name": "Новый курс", "start_date": "1 Января 1935", "target_date": "1 Января 1939", "status": "Экономические реформы" }
+            ],
+            "relations": {},
+            "military": "genit"
+        },
+        "Японская Империя": {
+            "status": "Активная", "is_great_power": true, "regime": "Монархия", "faction": "Сфера Сопроцветания", "overlord": null,
+            "resources": "Нефть: критический дефицит | Сталь: дефицит | Рис: самообеспечение",
+            "stats": { "stability": 70, "war_support": 85, "military_readiness": 75, "manpower_approx": "950 тыс. чел." },
+            "profile": "Милитаристы набирают силу. Армия контролирует Маньчжурию и присматривается к остальному Китаю.",
+            "current_issues": [
+                { "name": "Давление на Северный Китай", "start_date": "1 Января 1935", "target_date": "1 Января 1936", "status": "Дипломатическое и военное проникновение" }
+            ],
+            "relations": { "Китайская Республика": "Враждебность", "СССР": "Настороженность" },
+            "military": "genit"
+        },
+        "Китайская Республика": {
+            "status": "Активная", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null,
+            "resources": "Вольфрам: мировой экспорт | Сталь: слабая база | Сельское хозяйство",
+            "stats": { "stability": 30, "war_support": 50, "military_readiness": 40, "manpower_approx": "1.8 млн чел." },
+            "profile": "Правительство Гоминьдана во главе с Чан Кайши ведет войну против коммунистов и терпит японскую агрессию.",
+            "current_issues": [
+                { "name": "Кампании на окружение КПК", "start_date": "1 Января 1935", "target_date": "1 Октября 1935", "status": "Преследование" }
+            ],
+            "relations": { "КПК": "Война", "Японская Империя": "Враждебность" },
+            "military": "genit"
+        },
+        "КПК": {
+            "status": "Активная", "is_great_power": false, "regime": "Коммунизм", "faction": "Нет", "overlord": null,
+            "resources": "Ограниченные партизанские базы",
+            "stats": { "stability": 80, "war_support": 90, "military_readiness": 30, "manpower_approx": "80 тыс. чел." },
+            "profile": "Китайская Советская Республика. В данный момент коммунисты находятся в процессе тяжелейшего Великого похода.",
+            "current_issues": [
+                { "name": "Великий поход", "start_date": "1 Января 1935", "target_date": "1 Ноября 1935", "status": "Форсирование рек и гор" }
+            ],
+            "relations": { "Китайская Республика": "Война" },
+            "military": "genit"
+        },
+        "Маньчжоу-го": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Сфера Сопроцветания", "overlord": "Японская Империя", "resources": "Уголь и железо: богатые залежи", "stats": { "stability": 40, "war_support": 50, "military_readiness": 25, "manpower_approx": "~150 тыс. чел." }, "profile": "Марионеточное государство Японии во главе с Пу И.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Польша": { "status": "Активная", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Уголь: Силезия | Сталь: умеренно", "stats": { "stability": 60, "war_support": 70, "military_readiness": 50, "manpower_approx": "350 тыс. чел." }, "profile": "Режим Санации. Польша балансирует между Германией и СССР.", "current_issues": [], "relations": { "Германский Рейх": "Настороженность", "СССР": "Настороженность" }, "military": "genit" },
+        "Чехословакия": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Малая Антанта", "overlord": null, "resources": "Военная промышленность (Шкода) | Сталь: избыток", "stats": { "stability": 70, "war_support": 40, "military_readiness": 60, "manpower_approx": "200 тыс. чел." }, "profile": "Демократия с мощнейшим ВПК и судетскими фортами.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Австрия": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Руда: Штирия | Туризм", "stats": { "stability": 40, "war_support": 20, "military_readiness": 30, "manpower_approx": "50 тыс. чел." }, "profile": "Австрофашизм. Угроза аншлюса Рейхом.", "current_issues": [], "relations": { "Германский Рейх": "Враждебность" }, "military": "genit" },
+        "Испания": { "status": "Активная", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Пириты, медь, ртуть: избыток", "stats": { "stability": 20, "war_support": 20, "military_readiness": 30, "manpower_approx": "140 тыс. чел." }, "profile": "Вторая Республика на грани гражданской войны.", "current_issues": [ { "name": "Политическая поляризация", "start_date": "1 Января 1935", "target_date": "1 Июля 1936", "status": "Эскалация насилия" } ], "relations": {}, "military": "genit" },
+        "Эфиопия": { "status": "Активная", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Кофе, золото, скот", "stats": { "stability": 60, "war_support": 85, "military_readiness": 20, "manpower_approx": "~350 тыс. ополчения" }, "profile": "Император Хайле Селассие готовится к обороне родины.", "current_issues": [ { "name": "Кризис в Уал-Уале", "start_date": "1 Января 1935", "target_date": "1 Октября 1935", "status": "Напряженность на границе" } ], "relations": { "Королевство Италия": "Враждебность" }, "military": "genit" },
+        "Канада": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Британская Империя", "overlord": null, "resources": "Никель, зерно, древесина", "stats": { "stability": 80, "war_support": 10, "military_readiness": 15, "manpower_approx": "10 тыс. чел." }, "profile": "Британский доминион.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Австралия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Британская Империя", "overlord": null, "resources": "Шерсть, минералы", "stats": { "stability": 85, "war_support": 10, "military_readiness": 15, "manpower_approx": "12 тыс. чел." }, "profile": "Британский доминион в Океании.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Новая Зеландия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Британская Империя", "overlord": null, "resources": "Сельское хозяйство", "stats": { "stability": 90, "war_support": 10, "military_readiness": 10, "manpower_approx": "5 тыс. чел." }, "profile": "Британский доминион.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Южно-Африканский Союз": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Британская Империя", "overlord": null, "resources": "Золото, алмазы, хром", "stats": { "stability": 60, "war_support": 10, "military_readiness": 15, "manpower_approx": "15 тыс. чел." }, "profile": "Британский доминион в Африке.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Британская Индия": { "status": "Спящая", "is_great_power": false, "regime": "Колония", "faction": "Британская Империя", "overlord": "Великобритания", "resources": "Джут, чай, резина, уголь", "stats": { "stability": 40, "war_support": 10, "military_readiness": 30, "manpower_approx": "200 тыс. чел." }, "profile": "Жемчужина британской короны.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Египет": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Британская Империя", "overlord": "Великобритания", "resources": "Хлопок, контроль Суэца", "stats": { "stability": 50, "war_support": 5, "military_readiness": 10, "manpower_approx": "20 тыс. чел." }, "profile": "Де-факто протекторат Великобритании.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Венгрия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Бокситы, сельское хозяйство", "stats": { "stability": 70, "war_support": 60, "military_readiness": 30, "manpower_approx": "70 тыс. чел." }, "profile": "Ревизионистское королевство Хорти.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Румыния": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Малая Антанта", "overlord": null, "resources": "Нефть (Плоешти) | Зерно", "stats": { "stability": 60, "war_support": 30, "military_readiness": 40, "manpower_approx": "180 тыс. чел." }, "profile": "Нефтяная сокровищница Европы.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Югославия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Малая Антанта", "overlord": null, "resources": "Медь, бокситы, свинец", "stats": { "stability": 40, "war_support": 30, "military_readiness": 40, "manpower_approx": "150 тыс. чел." }, "profile": "Многонациональное королевство на Балканах.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Болгария": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Табак, сельское хозяйство", "stats": { "stability": 60, "war_support": 50, "military_readiness": 30, "manpower_approx": "40 тыс. чел." }, "profile": "Реваншистское балканское царство.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Греция": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Судоходство, оливки, табак", "stats": { "stability": 50, "war_support": 20, "military_readiness": 30, "manpower_approx": "60 тыс. чел." }, "profile": "Нестабильная республика.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Албания": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": "Королевство Италия", "resources": "Битум, хром", "stats": { "stability": 60, "war_support": 10, "military_readiness": 10, "manpower_approx": "12 тыс. чел." }, "profile": "Сателлит Италии.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Турция": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Хром (мировой лидер), табак", "stats": { "stability": 80, "war_support": 20, "military_readiness": 45, "manpower_approx": "180 тыс. чел." }, "profile": "Кемалистская модернизированная республика.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Бельгия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Уголь | Медь, уран (Конго)", "stats": { "stability": 80, "war_support": 20, "military_readiness": 40, "manpower_approx": "80 тыс. чел." }, "profile": "Нейтрал с огромной колонией.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Нидерланды": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Нефть, резина, олово (Ост-Индия)", "stats": { "stability": 90, "war_support": 5, "military_readiness": 30, "manpower_approx": "40 тыс. чел." }, "profile": "Богатая колониальная держава.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Люксембург": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Сталь", "stats": { "stability": 95, "war_support": 0, "military_readiness": 5, "manpower_approx": "500 чел." }, "profile": "Карликовое герцогство.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Швейцария": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Точное машиностроение, банки", "stats": { "stability": 90, "war_support": 10, "military_readiness": 40, "manpower_approx": "Редут (300 тыс. ополчения)" }, "profile": "Оплот нейтралитета в Альпах.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Португалия": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Вольфрам, пробка | Колонии", "stats": { "stability": 75, "war_support": 10, "military_readiness": 25, "manpower_approx": "45 тыс. чел." }, "profile": "Режим Салазара.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Дания": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Сельское хозяйство", "stats": { "stability": 90, "war_support": 5, "military_readiness": 15, "manpower_approx": "15 тыс. чел." }, "profile": "Мирное королевство.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Исландия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": "Дания", "resources": "Рыболовство", "stats": { "stability": 90, "war_support": 0, "military_readiness": 0, "manpower_approx": "Береговая охрана" }, "profile": "В унии с Данией.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Швеция": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Железная руда (Кируна) высокого качества", "stats": { "stability": 85, "war_support": 10, "military_readiness": 30, "manpower_approx": "50 тыс. чел." }, "profile": "Индустриальный скандинавский нейтрал.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Норвегия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Торговый флот, гидроэнергия, рыба", "stats": { "stability": 90, "war_support": 5, "military_readiness": 20, "manpower_approx": "15 тыс. чел." }, "profile": "Морская нейтральная держава.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Финляндия": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Лес, никель (Петсамо)", "stats": { "stability": 70, "war_support": 40, "military_readiness": 35, "manpower_approx": "35 тыс. (Кадр)" }, "profile": "Республика, строящая Линию Энкеля/Маннергейма.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Ирландия": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Сельское хозяйство", "stats": { "stability": 70, "war_support": 20, "military_readiness": 15, "manpower_approx": "10 тыс. чел." }, "profile": "Свободное государство де Валера.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Эстония": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Горючие сланцы", "stats": { "stability": 60, "war_support": 20, "military_readiness": 25, "manpower_approx": "15 тыс. чел." }, "profile": "Авторитарный режим Пятса.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Латвия": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Лес, сельское хозяйство", "stats": { "stability": 60, "war_support": 20, "military_readiness": 25, "manpower_approx": "20 тыс. чел." }, "profile": "Режим Улманиса.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Литва": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Сельское хозяйство", "stats": { "stability": 60, "war_support": 25, "military_readiness": 25, "manpower_approx": "22 тыс. чел." }, "profile": "Режим Сметоны, спор о Вильно.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Вольный город Данциг": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": "Лига Наций", "resources": "Портовая инфраструктура", "stats": { "stability": 30, "war_support": 0, "military_readiness": 5, "manpower_approx": "Полиция (1.5 тыс.)" }, "profile": "Под мандатом Лиги Наций, Сенат за НСДАП.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Территория Саарского бассейна": { "status": "Спящая", "is_great_power": false, "regime": "Мандат", "faction": "Нет", "overlord": "Лига Наций", "resources": "Уголь, металлургия", "stats": { "stability": 50, "war_support": 0, "military_readiness": 0, "manpower_approx": "Международный контингент" }, "profile": "Ожидает плебисцита 13 января.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Ватикан": { "status": "Спящая", "is_great_power": false, "regime": "Теократия", "faction": "Нет", "overlord": null, "resources": "Духовный капитал", "stats": { "stability": 100, "war_support": 0, "military_readiness": 1, "manpower_approx": "Швейцарская гвардия (100 чел.)" }, "profile": "Святой Престол.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Сан-Марино": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Туризм, марки", "stats": { "stability": 90, "war_support": 0, "military_readiness": 1, "manpower_approx": "Церемониальная гвардия" }, "profile": "Древнейшая республика.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Монако": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": "Французская Республика", "resources": "Казино, курорты", "stats": { "stability": 90, "war_support": 0, "military_readiness": 1, "manpower_approx": "Карабинеры принца" }, "profile": "Княжество на Лазурном берегу.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Лихтенштейн": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Сельское хозяйство", "stats": { "stability": 95, "war_support": 0, "military_readiness": 1, "manpower_approx": "Полиция" }, "profile": "Альпийское княжество.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Андорра": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Пастбища", "stats": { "stability": 90, "war_support": 0, "military_readiness": 1, "manpower_approx": "Ополчение" }, "profile": "Сокняжество в Пиренеях.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Монгольская Народная Республика": { "status": "Спящая", "is_great_power": false, "regime": "Коммунизм", "faction": "Коминтерн", "overlord": "СССР", "resources": "Скотоводство, шерсть", "stats": { "stability": 60, "war_support": 40, "military_readiness": 20, "manpower_approx": "МНРА (~20 тыс. кавалерии)" }, "profile": "Союзник СССР в Азии.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Тувинская Народная Республика": { "status": "Спящая", "is_great_power": false, "regime": "Коммунизм", "faction": "Коминтерн", "overlord": "СССР", "resources": "Золото, пушнина", "stats": { "stability": 70, "war_support": 30, "military_readiness": 10, "manpower_approx": "Тувинская кавалерия (1.5 тыс.)" }, "profile": "Протекторат СССР в Саянах.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Тибет": { "status": "Спящая", "is_great_power": false, "regime": "Теократия", "faction": "Нет", "overlord": null, "resources": "Шерсть, соль", "stats": { "stability": 80, "war_support": 10, "military_readiness": 15, "manpower_approx": "Тибетская армия (~10 тыс.)" }, "profile": "Теократия Далай-ламы.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Синьцзян": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Нефть, нефрит, шерсть", "stats": { "stability": 30, "war_support": 40, "military_readiness": 20, "manpower_approx": "Войска Шэн Шицая (~25 тыс.)" }, "profile": "Китайский милитарист под влиянием СССР.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Сиам": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Рис, каучук, олово", "stats": { "stability": 50, "war_support": 20, "military_readiness": 30, "manpower_approx": "30 тыс. чел." }, "profile": "Независимое государство Индокитая.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Афганистан": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Лазурит, сухофрукты", "stats": { "stability": 60, "war_support": 30, "military_readiness": 25, "manpower_approx": "40 тыс. + племена" }, "profile": "Буферное королевство.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Персия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Нефть (АИНК, Хузестан)", "stats": { "stability": 60, "war_support": 20, "military_readiness": 30, "manpower_approx": "80 тыс. чел." }, "profile": "Шах Реза Пехлеви (в марте переименует в Иран).", "current_issues": [], "relations": {}, "military": "genit" },
+        "Ирак": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Нефть (Киркук)", "stats": { "stability": 50, "war_support": 15, "military_readiness": 25, "manpower_approx": "25 тыс. чел." }, "profile": "Хашимитское королевство под влиянием Лондона.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Саудовская Аравия": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Паломничество, нефть (в разведке)", "stats": { "stability": 70, "war_support": 30, "military_readiness": 20, "manpower_approx": "Ихваны / ополчение" }, "profile": "Королевство Ибн Сауда.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Йемен": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Кофе (Мокко)", "stats": { "stability": 60, "war_support": 40, "military_readiness": 15, "manpower_approx": "Племенные отряды" }, "profile": "Зейдитский имамат.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Маскат и Оман": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": "Великобритания", "resources": "Финики, морские пути", "stats": { "stability": 50, "war_support": 10, "military_readiness": 10, "manpower_approx": "Султанская стража" }, "profile": "Султанат под протекторатом.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Непал": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": null, "resources": "Лес, гуркхи", "stats": { "stability": 80, "war_support": 20, "military_readiness": 20, "manpower_approx": "Гуркхи (элитные части)" }, "profile": "Гималайское королевство.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Бутан": { "status": "Спящая", "is_great_power": false, "regime": "Монархия", "faction": "Нет", "overlord": "Великобритания", "resources": "Древесина", "stats": { "stability": 90, "war_support": 10, "military_readiness": 10, "manpower_approx": "Ополчение" }, "profile": "Изолированное королевство.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Мексика": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Серебро, нефть (Эль-Агила)", "stats": { "stability": 50, "war_support": 20, "military_readiness": 30, "manpower_approx": "50 тыс. чел." }, "profile": "Президентство Ласаро Карденаса.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Куба": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": "США", "resources": "Сахар, табак, никель", "stats": { "stability": 40, "war_support": 10, "military_readiness": 20, "manpower_approx": "15 тыс. чел." }, "profile": "Влияние Батисты и США.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Гаити": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Кофе, сахар", "stats": { "stability": 40, "war_support": 10, "military_readiness": 15, "manpower_approx": "Национальная гвардия" }, "profile": "После американской оккупации.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Доминиканская Республика": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Сахарный тростник", "stats": { "stability": 70, "war_support": 20, "military_readiness": 25, "manpower_approx": "8 тыс. чел." }, "profile": "Диктатура Трухильо.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Гватемала": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Бананы, кофе", "stats": { "stability": 60, "war_support": 15, "military_readiness": 20, "manpower_approx": "6 тыс. чел." }, "profile": "Диктатура Хорхе Убико.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Гондурас": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Бананы (UFCO)", "stats": { "stability": 50, "war_support": 15, "military_readiness": 15, "manpower_approx": "5 тыс. чел." }, "profile": "Власть United Fruit Company.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Сальвадор": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Кофе", "stats": { "stability": 60, "war_support": 20, "military_readiness": 25, "manpower_approx": "6 тыс. чел." }, "profile": "Диктатура Мартинеса после 'Ла Матанса'.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Никарагуа": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Кофе, золото", "stats": { "stability": 50, "war_support": 20, "military_readiness": 20, "manpower_approx": "Национальная гвардия" }, "profile": "Анастасио Сомоса берет контроль.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Коста-Рика": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Бананы, кофе", "stats": { "stability": 80, "war_support": 5, "military_readiness": 10, "manpower_approx": "Полиция (1 тыс.)" }, "profile": "Мирная демократия.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Панама": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": "США", "resources": "Панамский канал", "stats": { "stability": 60, "war_support": 5, "military_readiness": 10, "manpower_approx": "Полиция" }, "profile": "Зона канала под США.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Бразилия": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Кофе, каучук, железная руда", "stats": { "stability": 50, "war_support": 20, "military_readiness": 35, "manpower_approx": "80 тыс. чел." }, "profile": "Эра Варгаса, борьба с коммунистами и интегралистами.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Аргентина": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Мясо, пшеница (мировой экспортер)", "stats": { "stability": 60, "war_support": 20, "military_readiness": 40, "manpower_approx": "50 тыс. чел." }, "profile": "Бесславное десятилетие.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Чили": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Медь, селитра", "stats": { "stability": 60, "war_support": 20, "military_readiness": 35, "manpower_approx": "30 тыс. чел." }, "profile": "Президентство Артуро Алессандри.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Перу": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Медь, нефть, серебро", "stats": { "stability": 50, "war_support": 30, "military_readiness": 30, "manpower_approx": "25 тыс. чел." }, "profile": "Режим Оскара Бенавидеса.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Колумбия": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Кофе, нефть", "stats": { "stability": 65, "war_support": 20, "military_readiness": 30, "manpower_approx": "20 тыс. чел." }, "profile": "Либеральная республика.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Венесуэла": { "status": "Спящая", "is_great_power": false, "regime": "Диктатура", "faction": "Нет", "overlord": null, "resources": "Нефть (Маракайбо, мировой экспорт)", "stats": { "stability": 70, "war_support": 15, "military_readiness": 25, "manpower_approx": "15 тыс. чел." }, "profile": "Диктатура генерала Гомеса.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Уругвай": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Мясо, шерсть", "stats": { "stability": 70, "war_support": 10, "military_readiness": 20, "manpower_approx": "8 тыс. чел." }, "profile": "Южноамериканская Швейцария.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Эквадор": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Какао, бананы", "stats": { "stability": 40, "war_support": 20, "military_readiness": 20, "manpower_approx": "10 тыс. чел." }, "profile": "Политическая нестабильность в Андах.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Ньюфаундленд": { "status": "Спящая", "is_great_power": false, "regime": "Колония", "faction": "Британская Империя", "overlord": "Великобритания", "resources": "Треска, железная руда (Белл-Айленд)", "stats": { "stability": 60, "war_support": 5, "military_readiness": 10, "manpower_approx": "Ополчение" }, "profile": "Под прямым управлением Лондона после банкротства.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Филиппины": { "status": "Спящая", "is_great_power": false, "regime": "Колония", "faction": "Нет", "overlord": "США", "resources": "Сахар, копра, абака", "stats": { "stability": 60, "war_support": 15, "military_readiness": 20, "manpower_approx": "Филиппинские скауты (12 тыс.)" }, "profile": "Ожидает статуса Содружества под защитой США.", "current_issues": [], "relations": {}, "military": "genit" },
+        "Либерия": { "status": "Спящая", "is_great_power": false, "regime": "Республика", "faction": "Нет", "overlord": null, "resources": "Каучук (плантации Firestone)", "stats": { "stability": 50, "war_support": 10, "military_readiness": 10, "manpower_approx": "Пограничные силы (3 тыс.)" }, "profile": "Независимое государство американо-либерийцев.", "current_issues": [], "relations": {}, "military": "genit" }
+    }
+}
