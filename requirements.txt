@@ -1,0 +1,2 @@
+openai>=1.40
+# streamlit>=1.40   # нужен только для run_legacy.bat (старый интерфейс)
