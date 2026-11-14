@@ -1,0 +1,318 @@
+{
+  "notes_pages": {
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": "",
+    "13": "",
+    "14": "",
+    "15": "",
+    "16": "",
+    "17": "",
+    "18": "",
+    "19": "",
+    "20": "",
+    "21": "",
+    "22": "",
+    "23": "",
+    "24": "",
+    "25": "",
+    "26": "",
+    "27": "",
+    "28": "",
+    "29": "",
+    "30": "",
+    "31": "",
+    "32": "",
+    "33": "",
+    "34": "",
+    "35": "",
+    "36": "",
+    "37": "",
+    "38": "",
+    "39": "",
+    "40": "",
+    "41": "",
+    "42": "",
+    "43": "",
+    "44": "",
+    "45": "",
+    "46": "",
+    "47": "",
+    "48": "",
+    "49": "",
+    "50": "",
+    "51": "",
+    "52": "",
+    "53": "",
+    "54": "",
+    "55": "",
+    "56": "",
+    "57": "",
+    "58": "",
+    "59": "",
+    "60": "",
+    "61": "",
+    "62": "",
+    "63": "",
+    "64": "",
+    "65": "",
+    "66": "",
+    "67": "",
+    "68": "",
+    "69": "",
+    "70": "",
+    "71": "",
+    "72": "",
+    "73": "",
+    "74": "",
+    "75": "",
+    "76": "",
+    "77": "",
+    "78": "",
+    "79": "",
+    "80": "",
+    "81": "",
+    "82": "",
+    "83": "",
+    "84": "",
+    "85": "",
+    "86": "",
+    "87": "",
+    "88": "",
+    "89": "",
+    "90": "",
+    "91": "",
+    "92": "",
+    "93": "",
+    "94": "",
+    "95": "",
+    "96": "",
+    "97": "",
+    "98": "",
+    "99": ""
+  },
+  "token_usage": {
+    "turn": 0,
+    "total": 0
+  },
+  "is_alt_history": false,
+  "pending_diplo": [],
+  "in_game": true,
+  "ongoing_arcs": [
+    "Начало кампании 1 Января 1910"
+  ],
+  "note_page_num": 1,
+  "notes_titles": {},
+  "autosave_interval": 3,
+  "gm_chat": [],
+  "scenario_file": "demo_dreadnoughts_1910.json",
+  "alarm_clock_active": false,
+  "player_country": "Великобритания",
+  "conference_archives": [],
+  "solar_activity": 2,
+  "current_slot": 1,
+  "chats": {},
+  "scenario_name": "Демо: Эпоха дредноутов (1910)",
+  "advisor_chats": {
+    "internal": [
+      {
+        "role": "assistant",
+        "content": "Господин, внутренний порядок, законы и стабильность на моем контроле."
+      }
+    ],
+    "foreign": [
+      {
+        "role": "assistant",
+        "content": "Внешнеполитическое ведомство готово к защите интересов державы."
+      }
+    ],
+    "defense": [
+      {
+        "role": "assistant",
+        "content": "Генеральный штаб на связи. Докладываю о готовности армии и флота."
+      }
+    ]
+  },
+  "internal_events": [],
+  "unread_messages": [],
+  "turn": 1,
+  "turn_archives": [
+    {
+      "turn": 1,
+      "date": "1 Января 1910",
+      "player_orders_raw": "Старт сценария",
+      "world_events": [
+        {
+          "date": "1 Января 1910",
+          "title": "Корабельная программа Германии",
+          "desc": "Рейхстаг одобрил закладку новых дредноутов. В Лондоне встревожены."
+        },
+        {
+          "date": "1 Января 1910",
+          "title": "Забастовка на шахтах Рура",
+          "desc": "Требуют повышения жалованья и восьмичасового дня."
+        },
+        {
+          "date": "1 Января 1910",
+          "title": "Новый посол в Санкт-Петербурге",
+          "desc": "Париж укрепляет связи с Россией."
+        }
+      ],
+      "flavor_events": [],
+      "player_events": [],
+      "press_excerpt": null
+    }
+  ],
+  "current_date": "1 Января 1910",
+  "difficulty": "Нормальный",
+  "countries": {
+    "Великобритания": {
+      "status": "Активная",
+      "is_great_power": true,
+      "region": "Европа",
+      "regime": "Конституционная монархия",
+      "faction": "Антанта",
+      "profile": "Крупнейшая колониальная империя и владычица морей.",
+      "ambitions": "Сохранить баланс сил в Европе.",
+      "fears": "Рост германского флота.",
+      "resources": "Уголь: избыток, Нефть: дефицит",
+      "stats": {
+        "stability": 80,
+        "war_support": 35,
+        "military_readiness": 80,
+        "manpower_approx": "~700 тыс. чел."
+      },
+      "military": {
+        "infantry": [
+          {
+            "name": "Штатные винтовки (Великобритания)",
+            "type": "Винтовки пехоты",
+            "count": 150000,
+            "production": true,
+            "in_service": true,
+            "specs": "Калибр 6.5-7.92 мм, магазинное питание",
+            "evaluation": "Штатное вооружение пехоты.",
+            "is_known_globally": true
+          }
+        ],
+        "ground": [
+          {
+            "name": "Полевая дивизионная артиллерия",
+            "type": "Полевая артиллерия",
+            "count": 140,
+            "production": true,
+            "in_service": true,
+            "specs": "Калибр 75-76 мм",
+            "evaluation": "Основа дивизионного огня.",
+            "is_known_globally": true
+          }
+        ],
+        "air": [],
+        "navy": [
+          {
+            "name": "Патрульные канонерки (Великобритания)",
+            "type": "Эсминец / Канонерка",
+            "count": 4,
+            "production": true,
+            "in_service": true,
+            "specs": "Орудия 75-102 мм",
+            "evaluation": "Охрана территориальных вод.",
+            "is_known_globally": true
+          }
+        ]
+      },
+      "current_issues": [],
+      "relations": {}
+    },
+    "Германия": {
+      "status": "Активная",
+      "is_great_power": true,
+      "region": "Европа",
+      "regime": "Монархия",
+      "faction": "Тройственный союз",
+      "profile": "Империя с сильнейшей армией на континенте.",
+      "ambitions": "Место под солнцем.",
+      "fears": "Окружение.",
+      "stats": {
+        "stability": 75,
+        "war_support": 60,
+        "military_readiness": 85,
+        "manpower_approx": "~2 млн. чел."
+      },
+      "military": null,
+      "current_issues": [],
+      "relations": {}
+    },
+    "Франция": {
+      "status": "Активная",
+      "is_great_power": true,
+      "region": "Европа",
+      "regime": "Республика",
+      "faction": "Антанта",
+      "stats": {
+        "stability": 60,
+        "war_support": 50,
+        "military_readiness": 70,
+        "manpower_approx": "~1,3 млн. чел."
+      },
+      "military": null,
+      "current_issues": [],
+      "relations": {}
+    },
+    "Россия": {
+      "status": "Активная",
+      "is_great_power": true,
+      "region": "Европа",
+      "regime": "Самодержавие",
+      "faction": "Антанта",
+      "stats": {
+        "stability": 45,
+        "war_support": 40,
+        "military_readiness": 60,
+        "manpower_approx": "~1,4 млн. чел."
+      },
+      "military": null,
+      "current_issues": [],
+      "relations": {}
+    },
+    "Швейцария": {
+      "status": "Активная",
+      "region": "Европа",
+      "regime": "Республика",
+      "stats": {
+        "stability": 90,
+        "war_support": 10,
+        "military_readiness": 30,
+        "manpower_approx": "~100 тыс. чел."
+      },
+      "military": null,
+      "current_issues": [],
+      "relations": {}
+    },
+    "Бельгия": {
+      "status": "Активная",
+      "region": "Европа",
+      "regime": "Монархия",
+      "stats": {
+        "stability": 70,
+        "war_support": 20,
+        "military_readiness": 35,
+        "manpower_approx": "~100 тыс. чел."
+      },
+      "military": null,
+      "current_issues": [],
+      "relations": {}
+    }
+  },
+  "active_conference": null,
+  "rd_projects": []
+}

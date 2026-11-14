@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Geopolitics AI — стол</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/web/css/table.css">
+  <link rel="stylesheet" href="/web/css/scenes.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="inkfx1" x="-15%" y="-10%" width="130%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3" result="n1"/>
+      <feDisplacementMap in="SourceGraphic" in2="n1" scale="3.4" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="1.2" result="blur"/>
+      <feOffset in="blur" dx="0.8" dy="2.2" result="run"/>
+      <feMerge result="bled"><feMergeNode in="run"/><feMergeNode in="rough"/></feMerge>
+      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.05" numOctaves="3" seed="9" result="patch"/>
+      <feColorMatrix in="patch" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  4.2 0 0 0 -1.05" result="holes"/>
+      <feComposite in="bled" in2="holes" operator="in"/>
+    </filter>
+    <filter id="inkfx2" x="-15%" y="-10%" width="130%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="11" result="n1"/>
+      <feDisplacementMap in="SourceGraphic" in2="n1" scale="3.4" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="1.2" result="blur"/>
+      <feOffset in="blur" dx="0.8" dy="2.2" result="run"/>
+      <feMerge result="bled"><feMergeNode in="run"/><feMergeNode in="rough"/></feMerge>
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.03" numOctaves="3" seed="4" result="patch"/>
+      <feColorMatrix in="patch" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  4.2 0 0 0 -1.05" result="holes"/>
+      <feComposite in="bled" in2="holes" operator="in"/>
+    </filter>
+    <filter id="inkfx3" x="-15%" y="-10%" width="130%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="n1"/>
+      <feDisplacementMap in="SourceGraphic" in2="n1" scale="3.4" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+      <feGaussianBlur in="rough" stdDeviation="1.2" result="blur"/>
+      <feOffset in="blur" dx="0.8" dy="2.2" result="run"/>
+      <feMerge result="bled"><feMergeNode in="run"/><feMergeNode in="rough"/></feMerge>
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.06" numOctaves="3" seed="15" result="patch"/>
+      <feColorMatrix in="patch" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  4.2 0 0 0 -1.05" result="holes"/>
+      <feComposite in="bled" in2="holes" operator="in"/>
+    </filter>
+  </defs></svg>
+  <div id="cloth"></div>
+  <div id="stage"></div>
+  <script type="module" src="/web/js/app.js"></script>
+</body>
+</html>
